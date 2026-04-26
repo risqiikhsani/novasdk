@@ -1,5 +1,12 @@
 # Publishing Nova SDK to PyPI
 
+## Package Name
+
+The real PyPI package name is `boostingnova`.
+Users install it with `pip install boostingnova`.
+
+---
+
 ## Step 1: Create PyPI Accounts
 
 1. [test.pypi.org](https://test.pypi.org) — Register an account (for testing)
@@ -57,7 +64,7 @@ When asked for credentials:
 ## Step 5: Verify Test Install Works
 
 ```bash
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ novasdk
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ boostingnova
 ```
 
 If it installs cleanly, you're good to go.
@@ -70,7 +77,9 @@ If it installs cleanly, you're good to go.
 twine upload dist/*
 ```
 
-This publishes `novasdk 0.1.0` publicly to PyPI.
+This publishes `boostingnova 0.1.0` publicly to PyPI.
+
+> **Note:** PyPI rejected `novasdk` because the name was too similar to an existing project, so `boostingnova` is used instead.
 
 ---
 
@@ -84,7 +93,8 @@ You must bump the version each time — PyPI does not allow re-uploading the sam
 
 # 2. Also update version in pyproject.toml
 
-# 3. Rebuild
+# 3. Rebuild (clear old dist first to avoid uploading stale files)
+rm -rf dist/
 /Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -m build
 
 # 4. Upload
@@ -101,3 +111,4 @@ twine upload dist/*
 | `twine check dist/*` | Validate package before upload |
 | `twine upload --repository testpypi dist/*` | Upload to Test PyPI |
 | `twine upload dist/*` | Upload to real PyPI |
+| `rm -rf dist/` | Clear old builds before rebuilding |

@@ -1,7 +1,7 @@
-"""Tests for novasdk utilities."""
+"""Tests for boostingnova utilities."""
 
 from novasdk import __version__
 
 
 def test_version():
-    assert __version__ == "0.1.0"
+    assert __version__ == "0.2.0"
