@@ -1,4 +1,4 @@
-name: Hypernova Universal Publisher
+name: Publish to PyPI
 
 on:
   release:
