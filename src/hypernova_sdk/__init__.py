@@ -14,8 +14,9 @@ from hypernova_sdk.utils import (
     status,
     timer,
 )
+from hypernova_sdk.cache import ttl_cache, memoize, TTLCache
 
-__version__ = "0.2.0"
+__version__ = "1.0.0"
 
 __all__ = [
     "__version__",
@@ -31,4 +32,7 @@ __all__ = [
     "progress",
     "status",
     "timer",
+    "ttl_cache",
+    "memoize",
+    "TTLCache",
 ]
