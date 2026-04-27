@@ -11,21 +11,31 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.13"
 
-      - name: Install dependencies
+      - name: Verify Versions Match Tag
         run: |
-          # Use 'python -m pip' to ensure it's in the right environment
-          python -m pip install --upgrade pip build
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          # uv run makes sure tomllib is available in a temporary environment if needed
+          PY_VERSION=$(uvx python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
 
-      - name: Build package
-        run: python -m build
+          if [ "$TAG_VERSION" != "$PY_VERSION" ]; then
+            echo "Error: Tag version ($TAG_VERSION) does not match pyproject.toml ($PY_VERSION)"
+            exit 1
+          fi
+
+      - name: Build Package
+        run: uv build
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          # Use your secret here
-          password: ${{ secrets.PYPI_TOKEN }}
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: uv publish
