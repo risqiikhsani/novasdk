@@ -1,19 +1,19 @@
-# Nova SDK
+# HyperNova SDK
 
 A utility library for common Python tasks.
 
 ## Installation
 
 ```bash
-pip install novasdk
+pip install hypernova-sdk
 ```
 
 ## Quick Start
 
 ```python
-import novasdk
+import hypernova_sdk
 
-print(novasdk.__version__)
+print(hypernova_sdk.__version__)
 ```
 
 ## License

@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Package Info
 
-- **PyPI name**: `boostingnova`
-- **Install**: `pip install boostingnova`
-- **Python import**: `import novasdk` (internal package dir is `src/novasdk/`)
+- **PyPI name**: `hypernova-sdk`
+- **Install**: `pip install hypernova-sdk`
+- **Python import**: `import hypernova_sdk` (internal package dir is `src/hypernova_sdk/`)
 - **Version**: stored in both `src/novasdk/__init__.py` (`__version__`) and `pyproject.toml` (`version`) — keep them in sync
 
 ## Development Commands
@@ -34,14 +34,14 @@ twine upload dist/*
 
 ## Architecture
 
-- `src/novasdk/__init__.py` — public API, re-exports all utilities, holds `__version__`
-- `src/novasdk/utils.py` — all logging utilities (NovaLogger, helpers, context managers)
+- `src/hypernova_sdk/__init__.py` — public API, re-exports all utilities, holds `__version__`
+- `src/hypernova_sdk/utils.py` — all logging utilities (NovaLogger, helpers, context managers)
 - `tests/test_utils.py` — test stubs (version test only for now)
 
 ## Publishing / Versioning
 
 When releasing a new version, bump in **all three places** before building:
-1. `src/novasdk/__init__.py` → `__version__`
+1. `src/hypernova_sdk/__init__.py` → `__version__`
 2. `pyproject.toml` → `version`
 3. `tests/test_utils.py` → version assertion
 

@@ -1,6 +1,6 @@
-"""Nova SDK — a utility library for common Python tasks."""
+"""HyperNova SDK — a utility library for common Python tasks."""
 
-from novasdk.utils import (
+from hypernova_sdk.utils import (
     NovaLogger,
     nova_log,
     print_success,

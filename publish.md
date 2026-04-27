@@ -1,9 +1,24 @@
-# Publishing Nova SDK to PyPI
+# Publishing HyperNova SDK to PyPI
 
 ## Package Name
 
-The real PyPI package name is `boostingnova`.
-Users install it with `pip install boostingnova`.
+The real PyPI package name is `hypernova-sdk`.
+Users install it with `pip install hypernova-sdk`.
+
+## Managing Dependencies (Before publishing or updating)
+
+Whenever you add a new `import X` to the code, add `X` to `pyproject.toml` under `dependencies` right away:
+
+```toml
+dependencies = ["rich"]   # keep this list updated as you add imports
+```
+
+Dev-only dependencies (e.g. `pytest`, `ruff`) go under `[project.optional-dependencies]`:
+
+```toml
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+```
 
 ---
 
@@ -64,7 +79,7 @@ When asked for credentials:
 ## Step 5: Verify Test Install Works
 
 ```bash
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ boostingnova
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ hypernova-sdk
 ```
 
 If it installs cleanly, you're good to go.
@@ -77,9 +92,9 @@ If it installs cleanly, you're good to go.
 twine upload dist/*
 ```
 
-This publishes `boostingnova 0.1.0` publicly to PyPI.
+This publishes `hypernova-sdk 0.2.0` publicly to PyPI.
 
-> **Note:** PyPI rejected `novasdk` because the name was too similar to an existing project, so `boostingnova` is used instead.
+> **Note:** PyPI rejected `novasdk` because the name was too similar to an existing project, so `hypernova-sdk` is used instead.
 
 ---
 
@@ -88,7 +103,7 @@ This publishes `boostingnova 0.1.0` publicly to PyPI.
 You must bump the version each time — PyPI does not allow re-uploading the same version.
 
 ```bash
-# 1. Update version in src/novasdk/__init__.py
+# 1. Update version in src/hypernova_sdk/__init__.py
 #    e.g. change "0.1.0" → "0.2.0"
 
 # 2. Also update version in pyproject.toml

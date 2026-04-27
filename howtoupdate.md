@@ -2,7 +2,7 @@
 
 ## Step 1: Make Your Code Changes
 
-Edit the source files in `src/novasdk/` (e.g. `utils.py`, `__init__.py`).
+Edit the source files in `src/hypernova_sdk/` (e.g. `utils.py`, `__init__.py`).
 
 ---
 
@@ -10,7 +10,7 @@ Edit the source files in `src/novasdk/` (e.g. `utils.py`, `__init__.py`).
 
 You must bump the version **before** uploading — PyPI rejects re-uploads of the same version.
 
-### In `src/novasdk/__init__.py`:
+### In `src/hypernova_sdk/__init__.py`:
 ```python
 __version__ = "0.2.0"  # increment this
 ```
@@ -43,7 +43,7 @@ rm -rf dist/
 
 ```bash
 pip install -e .                    # editable install
-python -c "import boostingnova; print(boostingnova.__version__)"  # verify
+python -c "import hypernova_sdk; print(hypernova_sdk.__version__)"  # verify
 ```
 
 ---
@@ -54,15 +54,15 @@ python -c "import boostingnova; print(boostingnova.__version__)"  # verify
 twine upload dist/*
 ```
 
-View your updated package at: [pypi.org/project/boostingnova](https://pypi.org/project/boostingnova)
+View your updated package at: [pypi.org/project/hypernova-sdk](https://pypi.org/project/hypernova-sdk)
 
 ---
 
 ## Step 6: Verify the Update
 
 ```bash
-pip install boostingnova  # or --upgrade to update from an older version
-python -c "import boostingnova; print(boostingnova.__version__)"
+pip install hypernova-sdk  # or --upgrade to update from an older version
+python -c "import hypernova_sdk; print(hypernova_sdk.__version__)"
 ```
 
 ---
@@ -76,4 +76,4 @@ python -c "import boostingnova; print(boostingnova.__version__)"
 | `python -m build` | Rebuild `.whl` and `.tar.gz` |
 | `twine check dist/*` | Validate package before upload |
 | `twine upload dist/*` | Upload to PyPI |
-| `pip install boostingnova` | Install from PyPI |
+| `pip install hypernova-sdk` | Install from PyPI |

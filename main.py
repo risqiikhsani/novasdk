@@ -1,5 +1,5 @@
 def main():
-    print("Hello from novasdk!")
+    print("Hello from hypernova-sdk!")
 
 
 if __name__ == "__main__":

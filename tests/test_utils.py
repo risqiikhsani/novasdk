@@ -1,6 +1,6 @@
-"""Tests for boostingnova utilities."""
+"""Tests for hypernova-sdk utilities."""
 
-from novasdk import __version__
+from hypernova_sdk import __version__
 
 
 def test_version():
